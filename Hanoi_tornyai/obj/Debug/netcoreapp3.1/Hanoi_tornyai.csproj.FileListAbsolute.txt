@@ -1,0 +1,15 @@
+D:\MV.Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.exe
+D:\MV.Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.deps.json
+D:\MV.Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.runtimeconfig.json
+D:\MV.Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.runtimeconfig.dev.json
+D:\MV.Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.dll
+D:\MV.Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.pdb
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.csprojAssemblyReference.cache
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.Form1.resources
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.csproj.GenerateResource.cache
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.AssemblyInfoInputs.cache
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.AssemblyInfo.cs
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.csproj.CoreCompileInputs.cache
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.dll
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.pdb
+D:\MV.Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.genruntimeconfig.cache

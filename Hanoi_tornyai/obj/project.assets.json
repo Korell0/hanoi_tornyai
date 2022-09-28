@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\korsosadam\\.nuget\\packages\\": {}
+    "C:\\Users\\molnarviktor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\korsosadam\\source\\repos\\Hanoi_tornyai\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
+      "projectUniqueName": "D:\\MV.Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
       "projectName": "Hanoi_tornyai",
-      "projectPath": "C:\\Users\\korsosadam\\source\\repos\\Hanoi_tornyai\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
-      "packagesPath": "C:\\Users\\korsosadam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\korsosadam\\source\\repos\\Hanoi_tornyai\\Hanoi_tornyai\\obj\\",
+      "projectPath": "D:\\MV.Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
+      "packagesPath": "C:\\Users\\molnarviktor\\.nuget\\packages\\",
+      "outputPath": "D:\\MV.Hanoi\\Hanoi_tornyai\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\korsosadam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\molnarviktor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
