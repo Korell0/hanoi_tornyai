@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
+
 
 
 namespace Hanoi_tornyai
 {
     class RelMousPoz
     {
-        public int CursorX, CursorY;
+        public Point CursorPoz;
 
 
-        public RelMousPoz(int winpozX, int winpozY)
+        public RelMousPoz(Point cursorPoz)
         {
-            CursorX = Form1.MousePosition.X - winpozX;
-            CursorY = Form1.MousePosition.Y - winpozY;
+            CursorPoz = new Point(Form1.MousePosition.X - cursorPoz.X, Form1.MousePosition.Y - cursorPoz.Y);
         }
 
 

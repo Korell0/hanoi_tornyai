@@ -17,32 +17,6 @@ namespace Hanoi_tornyai
         public Form1()
         {
             InitializeComponent();
-            for (int i = 0; i < 2; i++)
-            {
-                Korongok.Add(new Korong(new Point(600, 600), new Size(200, 100), 10, this.Location));
-                this.Controls.Add(Korongok[i].Panel);
-            }
-        }
-
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-
-
-
-
-            RelMousPoz position = new RelMousPoz(this.Location.X, this.Location.Y);
-            if (e.Button == MouseButtons.Left)
-            {
-                panel1.Location = new Point(position.CursorX - panel1.Width/2, position.CursorY - panel1.Height/2);
-            }
-
-            button1.Click += new EventHandler(this.klikk);
-        }
-
-        private void klikk(object sender, EventArgs e)
-        {
-            MessageBox.Show("jeeeeeeeeeeeeeee");
         }
 
         private void Form1_LocationChanged(object sender, EventArgs e)
@@ -50,6 +24,25 @@ namespace Hanoi_tornyai
             for (int i = 0; i < Korongok.Count; i++)
             {
                 Korongok[i].Winpos = this.Location;
+            }
+        }
+
+        private void StartBtn_Click(object sender, EventArgs e)
+        {
+            int max_szelesseg = 180; //px
+            int min_szelesseg = 50; //px
+            int magassag = 20; //px
+            int gap = 10; //px
+            int korongszam = Convert.ToInt32(ComboBox.Text);
+            for (int i = 0; i < korongszam; i++)
+            {
+
+                int szelesseg = max_szelesseg - i * ((max_szelesseg - min_szelesseg) / korongszam);
+                int yHelyzet = groupBox1.Location.Y + groupBox1.Height + gap * i + i * magassag;
+
+                Korongok.Add(new Korong(new Point(100, yHelyzet), new Size(szelesseg, magassag), 10, this.Location));
+                this.Controls.Add(Korongok[i].Panel);
+                Korongok[i].Panel.BringToFront();
             }
         }
     }
