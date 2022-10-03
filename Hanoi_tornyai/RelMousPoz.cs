@@ -15,7 +15,7 @@ namespace Hanoi_tornyai
 
         public RelMousPoz(Point cursorPoz)
         {
-            CursorPoz = new Point(Form1.MousePosition.X - cursorPoz.X, Form1.MousePosition.Y - cursorPoz.Y);
+            CursorPoz = new Point(Form1.MousePosition.X - cursorPoz.X - 8, Form1.MousePosition.Y - cursorPoz.Y - 30);
         }
 
 

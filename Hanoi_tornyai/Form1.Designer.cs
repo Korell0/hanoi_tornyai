@@ -37,6 +37,10 @@ namespace Hanoi_tornyai
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.startOszlop1 = new System.Windows.Forms.Button();
+            this.startOszlop2 = new System.Windows.Forms.Button();
+            this.startOszlop3 = new System.Windows.Forms.Button();
+            this.label = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -55,20 +59,22 @@ namespace Hanoi_tornyai
             "8",
             "9",
             "10"});
-            this.ComboBox.Location = new System.Drawing.Point(370, 12);
+            this.ComboBox.Location = new System.Drawing.Point(400, 150);
             this.ComboBox.Name = "ComboBox";
-            this.ComboBox.Size = new System.Drawing.Size(121, 23);
+            this.ComboBox.Size = new System.Drawing.Size(100, 23);
             this.ComboBox.TabIndex = 0;
             this.ComboBox.Text = "3";
+            this.ComboBox.Visible = false;
             // 
             // StartBtn
             // 
-            this.StartBtn.Location = new System.Drawing.Point(527, 12);
+            this.StartBtn.Location = new System.Drawing.Point(400, 200);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(100, 50);
             this.StartBtn.TabIndex = 1;
             this.StartBtn.Text = "START";
             this.StartBtn.UseVisualStyleBackColor = true;
+            this.StartBtn.Visible = false;
             this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // groupBox1
@@ -79,6 +85,7 @@ namespace Hanoi_tornyai
             this.groupBox1.Size = new System.Drawing.Size(200, 350);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Visible = false;
             // 
             // panel1
             // 
@@ -96,6 +103,7 @@ namespace Hanoi_tornyai
             this.groupBox2.Size = new System.Drawing.Size(200, 350);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Visible = false;
             // 
             // panel2
             // 
@@ -113,6 +121,7 @@ namespace Hanoi_tornyai
             this.groupBox3.Size = new System.Drawing.Size(200, 350);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Visible = false;
             // 
             // panel3
             // 
@@ -122,12 +131,55 @@ namespace Hanoi_tornyai
             this.panel3.Size = new System.Drawing.Size(20, 300);
             this.panel3.TabIndex = 4;
             // 
+            // startOszlop1
+            // 
+            this.startOszlop1.Location = new System.Drawing.Point(314, 210);
+            this.startOszlop1.Name = "startOszlop1";
+            this.startOszlop1.Size = new System.Drawing.Size(30, 30);
+            this.startOszlop1.TabIndex = 7;
+            this.startOszlop1.Text = "1";
+            this.startOszlop1.UseVisualStyleBackColor = true;
+            this.startOszlop1.Click += new System.EventHandler(this.startOszlop1_Click);
+            // 
+            // startOszlop2
+            // 
+            this.startOszlop2.Location = new System.Drawing.Point(435, 210);
+            this.startOszlop2.Name = "startOszlop2";
+            this.startOszlop2.Size = new System.Drawing.Size(30, 30);
+            this.startOszlop2.TabIndex = 8;
+            this.startOszlop2.Text = "2";
+            this.startOszlop2.UseVisualStyleBackColor = true;
+            this.startOszlop2.Click += new System.EventHandler(this.startOszlop2_Click);
+            // 
+            // startOszlop3
+            // 
+            this.startOszlop3.Location = new System.Drawing.Point(556, 210);
+            this.startOszlop3.Name = "startOszlop3";
+            this.startOszlop3.Size = new System.Drawing.Size(30, 30);
+            this.startOszlop3.TabIndex = 9;
+            this.startOszlop3.Text = "3";
+            this.startOszlop3.UseVisualStyleBackColor = true;
+            this.startOszlop3.Click += new System.EventHandler(this.startOszlop3_Click);
+            // 
+            // label
+            // 
+            this.label.Location = new System.Drawing.Point(50, 100);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(800, 25);
+            this.label.TabIndex = 10;
+            this.label.Text = "Induló oszlop száma:";
+            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.startOszlop3);
+            this.Controls.Add(this.startOszlop2);
+            this.Controls.Add(this.startOszlop1);
             this.Controls.Add(this.StartBtn);
             this.Controls.Add(this.ComboBox);
             this.Controls.Add(this.groupBox1);
@@ -156,6 +208,10 @@ namespace Hanoi_tornyai
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button startOszlop1;
+        private System.Windows.Forms.Button startOszlop2;
+        private System.Windows.Forms.Button startOszlop3;
+        private System.Windows.Forms.Label label;
     }
 }
 

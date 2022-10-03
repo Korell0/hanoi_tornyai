@@ -17,19 +17,20 @@ namespace Hanoi_tornyai
     class Korong
     {
         public Panel Panel;
-        public int Nev;
+        public int Ertek;
         public Point Winpos;
+        public int MinErtek;
 
 
-        public Korong(Point position, Size size, int nev, Point winpos)
+        public Korong(Point position, Size size, int ertek, Point winpos)
         {
             Panel = new Panel();
             Panel.Enabled = true;
             Panel.Size = size;
             Panel.Location = position;
-            Nev = nev;
+            Ertek = ertek;
             Winpos = winpos;
-            Panel.BackColor = Color.Black;
+            Panel.BackColor = Color.BlueViolet;
 
             Panel.MouseMove += new MouseEventHandler(this.Event);
         }
@@ -37,9 +38,13 @@ namespace Hanoi_tornyai
         private void Event(object sender, MouseEventArgs e)
         {
             RelMousPoz mouseposition = new RelMousPoz(Winpos);
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left && MinErtek == Ertek)
             {
                 Panel.Location = new Point(mouseposition.CursorPoz.X - Panel.Width / 2, mouseposition.CursorPoz.Y - Panel.Height / 2);
+            } 
+            else
+            {
+                
             }
         }
     }
