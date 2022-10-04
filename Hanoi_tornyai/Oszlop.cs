@@ -10,8 +10,7 @@ namespace Hanoi_tornyai
     {
         public List<Korong> Bucket;
         public GroupBox Groupbox;
-
-
+        public int MinErtek;
 
 
         public Oszlop()

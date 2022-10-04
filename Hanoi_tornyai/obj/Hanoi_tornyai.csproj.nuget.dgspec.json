@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Tananyag\\IKT\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {}
+    "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {}
   },
   "projects": {
-    "D:\\Tananyag\\IKT\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {
+    "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Tananyag\\IKT\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
+        "projectUniqueName": "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
         "projectName": "Hanoi_tornyai",
-        "projectPath": "D:\\Tananyag\\IKT\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
+        "projectPath": "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
         "packagesPath": "C:\\Users\\Gellért\\.nuget\\packages\\",
-        "outputPath": "D:\\Tananyag\\IKT\\Hanoi\\Hanoi_tornyai\\obj\\",
+        "outputPath": "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -42,10 +42,6 @@ namespace Hanoi_tornyai
             {
                 Panel.Location = new Point(mouseposition.CursorPoz.X - Panel.Width / 2, mouseposition.CursorPoz.Y - Panel.Height / 2);
             } 
-            else
-            {
-                
-            }
         }
     }
 }
