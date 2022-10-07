@@ -15,6 +15,8 @@ namespace Hanoi_tornyai
         static Oszlop Indulo = new Oszlop();
         static Oszlop Erkezo = new Oszlop();
         static Oszlop Seged = new Oszlop();
+        static int korongszam = 0;
+        static int gap = 10; //px
 
 
         public Form1()
@@ -45,8 +47,8 @@ namespace Hanoi_tornyai
             int max_szelesseg = 180; //px
             int min_szelesseg = 50; //px
             int magassag = 20; //px
-            int gap = 10; //px
-            int korongszam = Convert.ToInt32(ComboBox.Text);
+            gap = 10; //px
+            korongszam = Convert.ToInt32(ComboBox.Text);
             for (int i = 0; i < korongszam; i++)
             {
                 int szelesseg = max_szelesseg - i * ((max_szelesseg - min_szelesseg) / korongszam);
@@ -56,31 +58,48 @@ namespace Hanoi_tornyai
                 Indulo.Bucket.Add(new Korong(new Point(xHelyzet, yHelyzet), new Size(szelesseg, magassag), korongszam - i, this.Location));
                 this.Controls.Add(Indulo.Bucket[i].Panel);
                 Indulo.Bucket[i].Panel.BringToFront();
-                MinErtekHatarozo(Indulo);
-                MinErtekHatarozo(Erkezo);
-                MinErtekHatarozo(Seged);
                 Indulo.Bucket[i].Panel.MouseUp += new MouseEventHandler(this.UjHely);
             }
+            MinErtekHatarozo();
         }
 
         private void UjHely(object sender, MouseEventArgs e)
         {
+            MinErtekHatarozo();
             Korong aktiv = AktivHatarozo(new RelMousPoz(this.Location));
             Oszlop korai = new List<Oszlop>() { Indulo, Erkezo, Seged }.Find(x => x.Bucket.Contains(aktiv));
             Oszlop hova = OszlopHatarozo(new RelMousPoz(this.Location));
-            hova = Erkezo;
-            if (aktiv.Ertek < hova.MinErtek && aktiv.Ertek == korai.MinErtek)
+            if (hova != null)
             {
-                korai.Bucket.Remove(aktiv);
-                hova.Bucket.Add(aktiv);
+                if (aktiv.Ertek < hova.MinErtek)
+                {
 
-                int gap = 5; //px
-                int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - aktiv.Panel.Width / 2;
-                int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - aktiv.Panel.Height - gap * hova.Bucket.Count - hova.Bucket.Count * aktiv.Panel.Height;
+                    int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - aktiv.Panel.Width / 2;
+                    int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - aktiv.Panel.Height - gap * hova.Bucket.Count - hova.Bucket.Count * aktiv.Panel.Height;
 
-                hova.Bucket[hova.Bucket.Count-1].Panel.Location = new Point(xHelyzet, yHelyzet);
+                    korai.Bucket.Remove(aktiv);
+                    hova.Bucket.Add(aktiv);
 
+                    aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
+                }
+                else
+                {
+                    Visszarak(korai, aktiv);
+                }
             }
+            else
+            {
+                Visszarak(korai, aktiv);
+            }
+
+            MinErtekHatarozo();
+        }
+
+        private void Visszarak(Oszlop hova, Korong aktiv)
+        {
+            int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - aktiv.Panel.Width / 2;
+            int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - aktiv.Panel.Height - gap * (hova.Bucket.Count -1) - (hova.Bucket.Count-1) * aktiv.Panel.Height;
+            aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
         }
 
         private Oszlop OszlopHatarozo(RelMousPoz mouseposition)
@@ -116,19 +135,23 @@ namespace Hanoi_tornyai
             return null;
         }
 
-        private void MinErtekHatarozo(Oszlop oszlop)
+        private void MinErtekHatarozo()
         {
-            foreach (Korong item in oszlop.Bucket)
+            List<Oszlop> oszlopok = new List<Oszlop>() { Indulo, Erkezo, Seged };
+            foreach (Oszlop oszlop in oszlopok)
             {
-                item.MinErtek = oszlop.Bucket.Min(x=>x.Ertek);
-            }
-            if (oszlop.Bucket.Count == 0)
-            {
-                oszlop.MinErtek = int.MaxValue;
-            }
-            else
-            {
-                oszlop.Bucket.Min(x => x.Ertek);
+                if (oszlop.Bucket.Count == 0)
+                {
+                    oszlop.MinErtek = korongszam + 1;
+                }
+                else
+                {
+                    foreach (Korong item in oszlop.Bucket)
+                    {
+                        item.MinErtek = oszlop.Bucket.Min(x => x.Ertek);
+                    }
+                    oszlop.MinErtek = oszlop.Bucket.Min(x => x.Ertek);
+                }
             }
         }
 
