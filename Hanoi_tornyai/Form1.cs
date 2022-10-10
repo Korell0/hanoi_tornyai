@@ -15,6 +15,7 @@ namespace Hanoi_tornyai
         static Oszlop Indulo = new Oszlop();
         static Oszlop Erkezo = new Oszlop();
         static Oszlop Seged = new Oszlop();
+        static Korong Aktiv;
         static int korongszam = 0;
         static int gap = 10; //px
 
@@ -59,47 +60,85 @@ namespace Hanoi_tornyai
                 this.Controls.Add(Indulo.Bucket[i].Panel);
                 Indulo.Bucket[i].Panel.BringToFront();
                 Indulo.Bucket[i].Panel.MouseUp += new MouseEventHandler(this.UjHely);
+                Indulo.Bucket[i].Panel.MouseDown += new MouseEventHandler(this.GetAktiv);
             }
             MinErtekHatarozo();
         }
-
-        private void UjHely(object sender, MouseEventArgs e)
+        private void GetAktiv(object sender, MouseEventArgs e)
         {
             MinErtekHatarozo();
-            Korong aktiv = AktivHatarozo(new RelMousPoz(this.Location));
-            Oszlop korai = new List<Oszlop>() { Indulo, Erkezo, Seged }.Find(x => x.Bucket.Contains(aktiv));
-            Oszlop hova = OszlopHatarozo(new RelMousPoz(this.Location));
-            if (hova != null)
+            RelMousPoz mouseposition = new RelMousPoz(this.Location); 
+            List<Oszlop> oszlopok = new List<Oszlop>() { Erkezo, Indulo, Seged };
+            foreach (Oszlop item in oszlopok)
             {
-                if (aktiv.Ertek < hova.MinErtek)
+                foreach (Korong element in item.Bucket)
                 {
+                    if (element.Panel.Location.X < mouseposition.CursorPoz.X && element.Panel.Location.X + element.Panel.Width > mouseposition.CursorPoz.X
+                                                                             &&
+                        element.Panel.Location.Y < mouseposition.CursorPoz.Y && element.Panel.Location.Y + element.Panel.Height > mouseposition.CursorPoz.Y)
+                    {
+                        if (element.Ertek == element.MinErtek)
+                        {
+                            Aktiv = element;
+                        }
+                    }
+                }
+            }
+        }
 
-                    int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - aktiv.Panel.Width / 2;
-                    int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - aktiv.Panel.Height - gap * hova.Bucket.Count - hova.Bucket.Count * aktiv.Panel.Height;
+            private void UjHely(object sender, MouseEventArgs e)
+        {
+            Oszlop hova = OszlopHatarozo(new RelMousPoz(this.Location));
+            Oszlop korai = new List<Oszlop>() { Indulo, Erkezo, Seged }.Find(x => x.Bucket.Contains(Aktiv));
+            if (Aktiv != null)    
+            {
+                if (hova != null)
+                {
+                    if (Aktiv.Ertek < hova.MinErtek)
+                    {
+                        int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - Aktiv.Panel.Width / 2;
+                        int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - Aktiv.Panel.Height - gap * hova.Bucket.Count - hova.Bucket.Count * Aktiv.Panel.Height;
 
-                    korai.Bucket.Remove(aktiv);
-                    hova.Bucket.Add(aktiv);
+                        korai.Bucket.Remove(Aktiv);
+                        hova.Bucket.Add(Aktiv);
 
-                    aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
+                        Aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
+                    }
+                    else
+                    {
+                        Visszarak(korai, Aktiv);
+                    }
                 }
                 else
                 {
-                    Visszarak(korai, aktiv);
+                    Visszarak(korai, Aktiv);
                 }
             }
-            else
-            {
-                Visszarak(korai, aktiv);
-            }
-
             MinErtekHatarozo();
+            Aktiv = null;
+            Wincheck();
         }
 
-        private void Visszarak(Oszlop hova, Korong aktiv)
+        private void Wincheck()
         {
-            int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - aktiv.Panel.Width / 2;
-            int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - aktiv.Panel.Height - gap * (hova.Bucket.Count -1) - (hova.Bucket.Count-1) * aktiv.Panel.Height;
-            aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
+            DialogResult valasz;
+            if (korongszam == Erkezo.Bucket.Count)
+            {
+                valasz= MessageBox.Show("Gratulálok nyertél!🤗🤗🍾🥂🍺🍆🍆🍆💦✡🕎☢⛔🔞🚳\nSzeretnél új játékot kezdeni?","YEEEEEEEEEEEEEEEEEEE",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if (valasz == DialogResult.No)
+                {
+                    Application.Exit();
+                }
+                MessageBox.Show("Akkor inditsd el újra!");
+                Application.Exit();
+            }
+        }
+
+        private void Visszarak(Oszlop hova, Korong Aktiv)
+        {
+            int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - Aktiv.Panel.Width / 2;
+            int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - Aktiv.Panel.Height - gap * (hova.Bucket.Count -1) - (hova.Bucket.Count-1) * Aktiv.Panel.Height;
+            Aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
         }
 
         private Oszlop OszlopHatarozo(RelMousPoz mouseposition)
@@ -112,24 +151,6 @@ namespace Hanoi_tornyai
                     item.Groupbox.Location.Y < mouseposition.CursorPoz.Y && item.Groupbox.Location.Y + item.Groupbox.Height > mouseposition.CursorPoz.Y)
                 {
                     return item;
-                }
-            }
-            return null;
-        }
-
-        private Korong AktivHatarozo(RelMousPoz mouseposition)
-        {
-            List<Oszlop> oszlopok = new List<Oszlop>() { Erkezo, Indulo, Seged};
-            foreach (Oszlop item in oszlopok)
-            {
-                foreach (Korong element in item.Bucket)
-                {
-                    if (element.Panel.Location.X < mouseposition.CursorPoz.X && element.Panel.Location.X + element.Panel.Width > mouseposition.CursorPoz.X
-                                                                             &&
-                        element.Panel.Location.Y < mouseposition.CursorPoz.Y && element.Panel.Location.Y + element.Panel.Height > mouseposition.CursorPoz.Y)
-                    {
-                        return element;
-                    }
                 }
             }
             return null;
@@ -194,7 +215,8 @@ namespace Hanoi_tornyai
             ComboBox.Visible = true;
             StartBtn.Visible = true;
 
-            label.Visible = false;
+            label.Text = "Korongok száma:";
+
         }
 
         private void ThirdVisibleStatus()
@@ -205,6 +227,13 @@ namespace Hanoi_tornyai
 
             StartBtn.Visible = false;
             ComboBox.Visible = false;
+
+            label.Visible = false;
+        }
+
+        private void ComboBox_TextChanged(object sender, EventArgs e)
+        {
+            StartBtn.Enabled = true;
         }
     }
 }

@@ -49,6 +49,7 @@ namespace Hanoi_tornyai
             // ComboBox
             // 
             this.ComboBox.AllowDrop = true;
+            this.ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox.FormattingEnabled = true;
             this.ComboBox.Items.AddRange(new object[] {
             "3",
@@ -63,11 +64,12 @@ namespace Hanoi_tornyai
             this.ComboBox.Name = "ComboBox";
             this.ComboBox.Size = new System.Drawing.Size(100, 23);
             this.ComboBox.TabIndex = 0;
-            this.ComboBox.Text = "3";
             this.ComboBox.Visible = false;
+            this.ComboBox.TextChanged += new System.EventHandler(this.ComboBox_TextChanged);
             // 
             // StartBtn
             // 
+            this.StartBtn.Enabled = false;
             this.StartBtn.Location = new System.Drawing.Point(400, 200);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(100, 50);
