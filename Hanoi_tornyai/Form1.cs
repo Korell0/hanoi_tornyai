@@ -17,6 +17,9 @@ namespace Hanoi_tornyai
         static Oszlop Seged = new Oszlop();
         static Korong Aktiv;
         static int korongszam = 0;
+        static List<Lepes> Vissza = new List<Lepes>();
+        static List<Lepes> Elore = new List<Lepes>();
+
         static int gap = 10; //px
 
 
@@ -48,17 +51,17 @@ namespace Hanoi_tornyai
             int max_szelesseg = 180; //px
             int min_szelesseg = 50; //px
             int magassag = 20; //px
-            gap = 10; //px
             korongszam = Convert.ToInt32(ComboBox.Text);
             for (int i = 0; i < korongszam; i++)
             {
                 int szelesseg = max_szelesseg - i * ((max_szelesseg - min_szelesseg) / korongszam);
-                int yHelyzet = Indulo.Groupbox.Location.Y + Indulo.Groupbox.Height - magassag - gap * i - i * magassag;
-                int xHelyzet = Indulo.Groupbox.Location.X + Indulo.Groupbox.Width / 2 - szelesseg / 2;
 
-                Indulo.Bucket.Add(new Korong(new Point(xHelyzet, yHelyzet), new Size(szelesseg, magassag), korongszam - i, this.Location));
+                Indulo.Bucket.Add(new Korong(new Size(szelesseg, magassag), korongszam - i, this.Location));
+                Athelyez(Indulo, Indulo.Bucket[i]);
+
                 this.Controls.Add(Indulo.Bucket[i].Panel);
                 Indulo.Bucket[i].Panel.BringToFront();
+
                 Indulo.Bucket[i].Panel.MouseUp += new MouseEventHandler(this.UjHely);
                 Indulo.Bucket[i].Panel.MouseDown += new MouseEventHandler(this.GetAktiv);
             }
@@ -68,8 +71,7 @@ namespace Hanoi_tornyai
         {
             MinErtekHatarozo();
             RelMousPoz mouseposition = new RelMousPoz(this.Location); 
-            List<Oszlop> oszlopok = new List<Oszlop>() { Erkezo, Indulo, Seged };
-            foreach (Oszlop item in oszlopok)
+            foreach (Oszlop item in new List<Oszlop>() { Erkezo, Indulo, Seged })
             {
                 foreach (Korong element in item.Bucket)
                 {
@@ -80,51 +82,45 @@ namespace Hanoi_tornyai
                         if (element.Ertek == element.MinErtek)
                         {
                             Aktiv = element;
+                            Aktiv.Panel.BringToFront();
                         }
                     }
                 }
             }
         }
 
-            private void UjHely(object sender, MouseEventArgs e)
+        private void UjHely(object sender, MouseEventArgs e)
         {
             Oszlop hova = OszlopHatarozo(new RelMousPoz(this.Location));
             Oszlop korai = new List<Oszlop>() { Indulo, Erkezo, Seged }.Find(x => x.Bucket.Contains(Aktiv));
-            if (Aktiv != null)    
+            if (Aktiv != null)
             {
-                if (hova != null)
+                if (hova != null && Aktiv.Ertek < hova.MinErtek)
                 {
-                    if (Aktiv.Ertek < hova.MinErtek)
-                    {
-                        int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - Aktiv.Panel.Width / 2;
-                        int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - Aktiv.Panel.Height - gap * hova.Bucket.Count - hova.Bucket.Count * Aktiv.Panel.Height;
-
-                        korai.Bucket.Remove(Aktiv);
-                        hova.Bucket.Add(Aktiv);
-
-                        Aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
-                    }
-                    else
-                    {
-                        Visszarak(korai, Aktiv);
-                    }
+                    Vissza.Add(new Lepes(korai, hova, Aktiv.Ertek));
+                    lepesLabel.Text = Vissza.Count.ToString();
+                    Elore.Clear();
+                    VisszaBtn.Enabled = true;
+                    EloreBtn.Enabled = false;
+                    korai.Bucket.Remove(Aktiv);
+                    hova.Bucket.Add(Aktiv);
+                    Athelyez(hova, Aktiv);
                 }
                 else
                 {
-                    Visszarak(korai, Aktiv);
+                    Athelyez(korai, Aktiv);
                 }
             }
-            MinErtekHatarozo();
             Aktiv = null;
+            MinErtekHatarozo();
             Wincheck();
         }
 
         private void Wincheck()
         {
-            DialogResult valasz;
             if (korongszam == Erkezo.Bucket.Count)
             {
-                valasz= MessageBox.Show("Gratulálok nyertél!🤗🤗🍾🥂🍺🍆🍆🍆💦✡🕎☢⛔🔞🚳\nSzeretnél új játékot kezdeni?","YEEEEEEEEEEEEEEEEEEE",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                DialogResult valasz = MessageBox.Show("Gratulálok nyertél!🤗🤗🍾🥂🍺🍆🍆🍆💦✡🕎☢⛔🔞🚳\nSzeretnél új játékot kezdeni?","YEEEEEEEEEEEEEEEEEEE",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (valasz == DialogResult.No)
                 {
                     Application.Exit();
@@ -134,11 +130,11 @@ namespace Hanoi_tornyai
             }
         }
 
-        private void Visszarak(Oszlop hova, Korong Aktiv)
+        private void Athelyez(Oszlop hova, Korong aktiv)
         {
-            int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - Aktiv.Panel.Width / 2;
-            int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - Aktiv.Panel.Height - gap * (hova.Bucket.Count -1) - (hova.Bucket.Count-1) * Aktiv.Panel.Height;
-            Aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
+            int xHelyzet = hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - aktiv.Panel.Width / 2;
+            int yHelyzet = hova.Groupbox.Location.Y + hova.Groupbox.Height - aktiv.Panel.Height - gap * (hova.Bucket.Count -1) - (hova.Bucket.Count - 1) * aktiv.Panel.Height;
+            aktiv.Panel.Location = new Point(xHelyzet, yHelyzet);
         }
 
         private Oszlop OszlopHatarozo(RelMousPoz mouseposition)
@@ -158,8 +154,7 @@ namespace Hanoi_tornyai
 
         private void MinErtekHatarozo()
         {
-            List<Oszlop> oszlopok = new List<Oszlop>() { Indulo, Erkezo, Seged };
-            foreach (Oszlop oszlop in oszlopok)
+            foreach (Oszlop oszlop in new List<Oszlop>() { Indulo, Erkezo, Seged })
             {
                 if (oszlop.Bucket.Count == 0)
                 {
@@ -170,6 +165,11 @@ namespace Hanoi_tornyai
                     foreach (Korong item in oszlop.Bucket)
                     {
                         item.MinErtek = oszlop.Bucket.Min(x => x.Ertek);
+                        item.Panel.Cursor = System.Windows.Forms.Cursors.No;
+                        if (item.MinErtek == item.Ertek)
+                        {
+                            item.Panel.Cursor = System.Windows.Forms.Cursors.Hand;
+                        }
                     }
                     oszlop.MinErtek = oszlop.Bucket.Min(x => x.Ertek);
                 }
@@ -184,7 +184,6 @@ namespace Hanoi_tornyai
         {
             ChangeToSecondStatus(groupBox2, startOszlop2);
         }
-
         private void startOszlop3_Click(object sender, EventArgs e)
         {
             ChangeToSecondStatus(groupBox3, startOszlop3);
@@ -229,11 +228,57 @@ namespace Hanoi_tornyai
             ComboBox.Visible = false;
 
             label.Visible = false;
+
+            idealLabel.Visible = false;
+            lepesLabel.Visible = true;
+            VisszaBtn.Visible = true;
+            EloreBtn.Visible = true;
         }
 
         private void ComboBox_TextChanged(object sender, EventArgs e)
         {
             StartBtn.Enabled = true;
+
+            idealLabel.Text = $"Minimum lépések száma:\n{Math.Pow(2, Convert.ToInt32(ComboBox.Text))-1}";
+            idealLabel.Visible = true;
+        }
+
+        private void VisszaBtn_Click(object sender, EventArgs e)
+        {
+            Oszlop honnan = Vissza[Vissza.Count - 1].Hova;
+            Oszlop hova = Vissza[Vissza.Count - 1].Honnan;
+            Korong mit = Vissza[Vissza.Count - 1].Hova.Bucket.Find(x => x.Ertek == Vissza[Vissza.Count - 1].Ertek);
+            mit.Panel.Location = new Point(hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - mit.Panel.Width / 2, (hova.Groupbox.Location.Y + hova.Groupbox.Height - (hova.Bucket.Count)*gap - (hova.Bucket.Count + 1)*mit.Panel.Height ));
+            honnan.Bucket.Remove(mit);
+            hova.Bucket.Add(mit);
+            Elore.Add(Vissza[Vissza.Count - 1]);
+            Vissza.RemoveAt(Vissza.Count - 1);
+            MinErtekHatarozo();
+            lepesLabel.Text = Vissza.Count.ToString();
+            EloreBtn.Enabled = true;
+            if (Vissza.Count < 1)
+            {
+                VisszaBtn.Enabled = false;
+            }
+        }
+
+        private void EloreBtn_Click(object sender, EventArgs e)
+        {
+            Oszlop hova = Elore[Elore.Count - 1].Hova;
+            Oszlop honnan = Elore[Elore.Count - 1].Honnan;
+            Korong mit = Elore[Elore.Count - 1].Honnan.Bucket.Find(x => x.Ertek == Elore[Elore.Count - 1].Ertek);
+            mit.Panel.Location = new Point(hova.Groupbox.Location.X + hova.Groupbox.Width / 2 - mit.Panel.Width / 2, (hova.Groupbox.Location.Y + hova.Groupbox.Height - (hova.Bucket.Count) * gap - (hova.Bucket.Count + 1) * mit.Panel.Height));
+            honnan.Bucket.Remove(mit);
+            hova.Bucket.Add(mit);
+            Vissza.Add(Elore[Elore.Count - 1]);
+            Elore.RemoveAt(Elore.Count - 1);
+            MinErtekHatarozo();
+            lepesLabel.Text = Vissza.Count.ToString();
+            VisszaBtn.Enabled = true;
+            if (Elore.Count < 1)
+            {
+                EloreBtn.Enabled = false;
+            }
         }
     }
 }

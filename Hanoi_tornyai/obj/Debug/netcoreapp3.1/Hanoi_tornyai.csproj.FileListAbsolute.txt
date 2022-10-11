@@ -36,7 +36,6 @@ D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.run
 D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.dll
 D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\bin\Debug\netcoreapp3.1\Hanoi_tornyai.pdb
 D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.csproj.AssemblyReference.cache
-D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.Form1.resources
 D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.csproj.GenerateResource.cache
 D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.GeneratedMSBuildEditorConfig.editorconfig
 D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.AssemblyInfoInputs.cache
@@ -60,3 +59,4 @@ C:\Users\molnarviktor\Source\Repos\hanoi_tornyai2\Hanoi_tornyai\obj\Debug\netcor
 C:\Users\molnarviktor\Source\Repos\hanoi_tornyai2\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.dll
 C:\Users\molnarviktor\Source\Repos\hanoi_tornyai2\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.pdb
 C:\Users\molnarviktor\Source\Repos\hanoi_tornyai2\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.genruntimeconfig.cache
+D:\Tananyag\Aszalk\Hanoi\Hanoi_tornyai\obj\Debug\netcoreapp3.1\Hanoi_tornyai.Form1.resources

@@ -41,6 +41,10 @@ namespace Hanoi_tornyai
             this.startOszlop2 = new System.Windows.Forms.Button();
             this.startOszlop3 = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
+            this.lepesLabel = new System.Windows.Forms.Label();
+            this.idealLabel = new System.Windows.Forms.Label();
+            this.VisszaBtn = new System.Windows.Forms.Button();
+            this.EloreBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -172,12 +176,64 @@ namespace Hanoi_tornyai
             this.label.Text = "Induló oszlop száma:";
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lepesLabel
+            // 
+            this.lepesLabel.Location = new System.Drawing.Point(840, 9);
+            this.lepesLabel.Name = "lepesLabel";
+            this.lepesLabel.Size = new System.Drawing.Size(32, 30);
+            this.lepesLabel.TabIndex = 11;
+            this.lepesLabel.Text = "0";
+            this.lepesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lepesLabel.Visible = false;
+            // 
+            // idealLabel
+            // 
+            this.idealLabel.Location = new System.Drawing.Point(50, 270);
+            this.idealLabel.Name = "idealLabel";
+            this.idealLabel.Size = new System.Drawing.Size(800, 50);
+            this.idealLabel.TabIndex = 12;
+            this.idealLabel.Text = "0";
+            this.idealLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.idealLabel.Visible = false;
+            // 
+            // VisszaBtn
+            // 
+            this.VisszaBtn.Enabled = false;
+            this.VisszaBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VisszaBtn.Location = new System.Drawing.Point(12, 12);
+            this.VisszaBtn.Name = "VisszaBtn";
+            this.VisszaBtn.Size = new System.Drawing.Size(100, 50);
+            this.VisszaBtn.TabIndex = 13;
+            this.VisszaBtn.Text = "☜(ﾟヮﾟ☜)";
+            this.VisszaBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.VisszaBtn.UseVisualStyleBackColor = true;
+            this.VisszaBtn.Visible = false;
+            this.VisszaBtn.Click += new System.EventHandler(this.VisszaBtn_Click);
+            // 
+            // EloreBtn
+            // 
+            this.EloreBtn.Enabled = false;
+            this.EloreBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EloreBtn.Location = new System.Drawing.Point(118, 12);
+            this.EloreBtn.Name = "EloreBtn";
+            this.EloreBtn.Size = new System.Drawing.Size(100, 50);
+            this.EloreBtn.TabIndex = 14;
+            this.EloreBtn.Text = "(☞ﾟヮﾟ)☞\r\n";
+            this.EloreBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.EloreBtn.UseVisualStyleBackColor = true;
+            this.EloreBtn.Visible = false;
+            this.EloreBtn.Click += new System.EventHandler(this.EloreBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.EloreBtn);
+            this.Controls.Add(this.VisszaBtn);
+            this.Controls.Add(this.idealLabel);
+            this.Controls.Add(this.lepesLabel);
             this.Controls.Add(this.label);
             this.Controls.Add(this.startOszlop3);
             this.Controls.Add(this.startOszlop2);
@@ -191,7 +247,7 @@ namespace Hanoi_tornyai
             this.MinimumSize = new System.Drawing.Size(900, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Hanoi";
             this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -214,6 +270,10 @@ namespace Hanoi_tornyai
         private System.Windows.Forms.Button startOszlop2;
         private System.Windows.Forms.Button startOszlop3;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label lepesLabel;
+        private System.Windows.Forms.Label idealLabel;
+        private System.Windows.Forms.Button VisszaBtn;
+        private System.Windows.Forms.Button EloreBtn;
     }
 }
 

@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\molnarviktor\\Source\\Repos\\hanoi_tornyai2\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {}
+    "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {}
   },
   "projects": {
-    "C:\\Users\\molnarviktor\\Source\\Repos\\hanoi_tornyai2\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {
+    "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\molnarviktor\\Source\\Repos\\hanoi_tornyai2\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
+        "projectUniqueName": "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
         "projectName": "Hanoi_tornyai",
-        "projectPath": "C:\\Users\\molnarviktor\\Source\\Repos\\hanoi_tornyai2\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
-        "packagesPath": "C:\\Users\\molnarviktor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\molnarviktor\\Source\\Repos\\hanoi_tornyai2\\Hanoi_tornyai\\obj\\",
+        "projectPath": "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\Hanoi_tornyai.csproj",
+        "packagesPath": "C:\\Users\\Gellért\\.nuget\\packages\\",
+        "outputPath": "D:\\Tananyag\\Aszalk\\Hanoi\\Hanoi_tornyai\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\molnarviktor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Gellért\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -57,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
         }
       }
     }

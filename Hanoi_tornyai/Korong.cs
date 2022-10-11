@@ -22,15 +22,14 @@ namespace Hanoi_tornyai
         public int MinErtek;
 
 
-        public Korong(Point position, Size size, int ertek, Point winpos)
+        public Korong(Size size, int ertek, Point winpos)
         {
             Panel = new Panel();
             Panel.Enabled = true;
             Panel.Size = size;
-            Panel.Location = position;
             Ertek = ertek;
             Winpos = winpos;
-            Panel.BackColor = Color.BlueViolet;
+            Panel.BackColor = Color.FromArgb(13, 117, 183);
 
             Panel.MouseMove += new MouseEventHandler(this.Event);
         }
